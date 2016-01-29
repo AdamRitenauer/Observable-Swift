@@ -22,6 +22,10 @@ public class EventReference<T>: OwnableEvent {
         return event.add(subscription)
     }
     
+    public func add(queue:dispatch_queue_t, handler : T -> ()) -> EventSubscription<T> {
+        return event.add(queue, handler:handler)
+    }
+    
     public func add(handler : T -> ()) -> EventSubscription<T> {
         return event.add(handler)
     }
@@ -38,8 +42,8 @@ public class EventReference<T>: OwnableEvent {
         return event.add(owner: owner, handler)
     }
     
-    public convenience init() {
-        self.init(event: Event<T>())
+    public convenience init(queue:dispatch_queue_t? = nil) {
+        self.init(event: Event<T>(queue:queue))
     }
     
     public init(event: Event<T>) {

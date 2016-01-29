@@ -17,11 +17,35 @@ public struct Event<T>: UnownableEvent {
     public typealias HandlerType = SubscriptionType.HandlerType
     
     internal var _subscriptions = [SubscriptionType]()
+    internal var _queue:dispatch_queue_t?
+    
+    public init(queue:dispatch_queue_t? = nil) {
+        
+        self._queue = queue
+    }
     
     public mutating func notify(value: T) {
         _subscriptions = _subscriptions.filter { $0.valid() }
         for subscription in _subscriptions {
-            subscription.handler(value)
+            
+            if let subQueue = subscription._queue {
+             
+                dispatch_async(subQueue) {
+                    
+                    subscription.handler(value)
+                }
+            }
+            else if let defaultQueue = _queue {
+                
+                dispatch_async(defaultQueue) {
+                    
+                    subscription.handler(value)
+                }
+            }
+            else {
+            
+                subscription.handler(value)
+            }
         }
     }
     
@@ -32,6 +56,10 @@ public struct Event<T>: UnownableEvent {
     
     public mutating func add(handler : HandlerType) -> SubscriptionType {
         return add(SubscriptionType(owner: nil, handler: handler))
+    }
+    
+    public mutating func add(queue:dispatch_queue_t, handler : HandlerType) -> SubscriptionType {
+        return add(SubscriptionType(owner: nil, queue:queue, handler: handler))
     }
     
     public mutating func remove(subscription : SubscriptionType) {

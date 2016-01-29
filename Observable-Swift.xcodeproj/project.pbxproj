@@ -32,6 +32,8 @@
 		65D5366B195F711E003B5DA5 /* OwningEventReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D53669195F711E003B5DA5 /* OwningEventReference.swift */; };
 		65E6A4341958EB8000FBCFA7 /* ObservableProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E6A4331958EB8000FBCFA7 /* ObservableProxy.swift */; };
 		65E6A4351958EB8000FBCFA7 /* ObservableProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E6A4331958EB8000FBCFA7 /* ObservableProxy.swift */; };
+		D66B04FF1C5BCEE6001EAD33 /* ObservableConcurrencyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66B04FD1C5BCDD1001EAD33 /* ObservableConcurrencyTests.swift */; };
+		D66B05001C5BCEE7001EAD33 /* ObservableConcurrencyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66B04FD1C5BCDD1001EAD33 /* ObservableConcurrencyTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -141,6 +143,7 @@
 		65D53669195F711E003B5DA5 /* OwningEventReference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwningEventReference.swift; sourceTree = "<group>"; };
 		65E6A4331958EB8000FBCFA7 /* ObservableProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableProxy.swift; sourceTree = "<group>"; };
 		65E7DC711957919100CFB99C /* ObservableChainingProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableChainingProxy.swift; sourceTree = "<group>"; };
+		D66B04FD1C5BCDD1001EAD33 /* ObservableConcurrencyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableConcurrencyTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -227,6 +230,7 @@
 		65263AAC1954BC5000B39269 /* ObservableTests */ = {
 			isa = PBXGroup;
 			children = (
+				D66B04FD1C5BCDD1001EAD33 /* ObservableConcurrencyTests.swift */,
 				65263AAF1954BC5000B39269 /* ObservableTests.swift */,
 				65263AAD1954BC5000B39269 /* Supporting Files */,
 			);
@@ -446,6 +450,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D66B04FF1C5BCEE6001EAD33 /* ObservableConcurrencyTests.swift in Sources */,
 				65263AB01954BC5000B39269 /* ObservableTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -471,6 +476,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D66B05001C5BCEE7001EAD33 /* ObservableConcurrencyTests.swift in Sources */,
 				6592C3331957565F00BA8CB7 /* ObservableTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

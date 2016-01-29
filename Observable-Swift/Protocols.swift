@@ -17,6 +17,9 @@ public protocol AnyEvent {
     /// Add an existing subscription.
     mutating func add(subscription: EventSubscription<ValueType>) -> EventSubscription<ValueType>
     
+    /// Create, add and return a subscription for given handler for execution on a specific GCD queue.
+    mutating func add(queue:dispatch_queue_t, handler : ValueType -> ()) -> EventSubscription<ValueType>
+    
     /// Create, add and return a subscription for given handler.
     mutating func add(handler : ValueType -> ()) -> EventSubscription<ValueType>
     

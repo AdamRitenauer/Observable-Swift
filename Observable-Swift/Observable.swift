@@ -23,8 +23,8 @@ public struct Observable<T> : UnownableObservable {
     
     public typealias ValueType = T
 
-    public /*internal(set)*/ var beforeChange = EventReference<ValueChange<T>>()
-    public /*internal(set)*/ var afterChange = EventReference<ValueChange<T>>()
+    public /*internal(set)*/ var beforeChange:EventReference<ValueChange<T>>
+    public /*internal(set)*/ var afterChange:EventReference<ValueChange<T>>
     
     public var value : T {
     willSet { beforeChange.notify(ValueChange(value, newValue)) }
@@ -43,7 +43,9 @@ public struct Observable<T> : UnownableObservable {
         }
     }
 
-    public init(_ v : T) {
+    public init(_ v : T, queue:dispatch_queue_t? = nil) {
         value = v
+        beforeChange = EventReference<ValueChange<T>>(queue:queue)
+        afterChange = EventReference<ValueChange<T>>(queue:queue)
     }
 }

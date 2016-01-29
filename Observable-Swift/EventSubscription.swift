@@ -29,6 +29,9 @@ public class EventSubscription<T> {
     /// array of owned objects
     internal var _owned = [AnyObject]()
     
+    /// the queue, optionally, on which to run the handler
+    internal var _queue:dispatch_queue_t?
+    
     /// When invalid subscription is to be notified, it is removed instead.
     public func valid() -> Bool {
         if !_valid() {
@@ -48,13 +51,14 @@ public class EventSubscription<T> {
     
     /// Init with a handler and an optional owner.
     /// If owner is present, valid() is tied to its lifetime.
-    public init(owner o: AnyObject?, handler h: HandlerType) {
+    public init(owner o: AnyObject?,  queue q:dispatch_queue_t? = nil, handler h: HandlerType) {
         if o == nil {
             _valid = { true }
         } else {
             _valid = { [weak o] in o != nil }
         }
         handler = h
+        _queue = q
     }
     
     /// Add an object to be owned while the event is not invalidated

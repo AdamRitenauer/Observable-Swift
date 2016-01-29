@@ -17,8 +17,8 @@ public class ObservableReference<T> : ObservableProxy<T, Observable<T>>, Writabl
     set { storage.value = newValue }
     }
     
-    public init (_ v : T) {
-        storage = Observable(v)
+    public init (_ v : T, queue:dispatch_queue_t? = nil) {
+        storage = Observable(v, queue:queue)
         super.init(storage)
     }
     
